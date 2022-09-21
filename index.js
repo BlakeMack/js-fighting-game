@@ -11,8 +11,8 @@
 // shop sprite with animation done !!
 // player sprite (samurai mack)
 // idle done !!
-// run
-// jump
+// run done !!
+// jump(2:49:54!!)
 // attack
 // enemy spirte (kenshi)
 // interface design and animation
@@ -70,11 +70,18 @@ const player = new Fighter ({
   sprites: {
     idle: {
       imageSrc: './img/Idle.png',
-      FramesMax: 8
+      framesMax: 8
     },
     // start from player sprite run 2:36
     run: {
-
+      imageSrc: './img/Run.png',
+      framesMax: 8,
+      image: new Image()
+    },
+    jump: {
+      imageSrc: './img/Jump.png',
+      framesMax: 2,
+      image: new Image()
     }
   }
 })
@@ -136,10 +143,19 @@ function animate () {
   enemy.velocity.x = 0
 
   // player movement
+  player.switchSprite('idle')
   if (keys.a.pressed && player.LastKey === 'a') {
     player.velocity.x = -5
+    player.switchSprite('run')
+    console.log(player.image)
   } else if (keys.d.pressed && player.LastKey === 'd') {
     player.velocity.x = 5
+    player.switchSprite('run')
+    console.log(player.image)
+  }
+
+  if (player.velocity.y < 0) {
+    player.switchSprite('jump')
   }
 
   // enemy movement

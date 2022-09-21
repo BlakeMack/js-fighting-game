@@ -84,6 +84,12 @@ class Fighter extends Sprite {
     this.framesElapsed = 0
     this.framesHold = 5
     this.sprites = sprites
+    for (const sprite in this.sprites) {
+      sprites[sprite].image = new Image()
+      sprites[sprite].image.src = sprites[sprite].imageSrc
+    }
+
+    console.log(this.sprites);
   }
 
   update() {
@@ -108,5 +114,25 @@ class Fighter extends Sprite {
     setTimeout(() => {
       this.isAttacking = false
     }, 100);
+  }
+
+  switchSprite (sprite) {
+    switch(sprite) {
+      case 'idle':
+        if (this.image !== this.sprites.idle.image)
+          this.image = this.sprites.idle.image
+        break;
+      case 'run':
+        if (this.image !== this.sprites.run.image)
+        this.image = this.sprites.run.image
+        break;
+      case 'jump':
+        this.image = this.sprites.jump.image
+        console.log("hello world")
+        console.log(this.image)
+        this.framesMax = this.sprites.jump.framesMax
+        break;
+    }
+
   }
 }
