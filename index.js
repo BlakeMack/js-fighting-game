@@ -61,12 +61,12 @@ const player = new Fighter ({
     y: 0
   },
   imageSrc: './img/Idle.png',
-  framesMax: 8,
-  scale: 2.5,
   offset: {
     x: 215,
     y: 157
   },
+  framesMax: 8,
+  scale: 2.5,
   sprites: {
     idle: {
       imageSrc: './img/Idle.png',
@@ -110,6 +110,40 @@ color : 'blue ',
 offset: {
   x: -50,
   y : 0
+},
+imageSrc: './img/kenji/Idle.png',
+offset: {
+  x: 215,
+  y: 157
+},
+framesMax: 8,
+scale: 2.5,
+sprites: {
+  idle: {
+    imageSrc: './img/kenji/Idle.png',
+    framesMax: 8
+  },
+  // start from player sprite run 2:36
+  run: {
+    imageSrc: './img/kenji/Run.png',
+    framesMax: 8,
+    image: new Image()
+  },
+  jump: {
+    imageSrc: './img/kenji/Jump.png',
+    framesMax: 2,
+    image: new Image()
+  },
+  fall: {
+    imageSrc: './img/kenji/Fall.png',
+    framesMax: 2,
+    image: new Image()
+  },
+  attack1: {
+    imageSrc: './img/kenji/Attack1.png',
+    framesMax: 6,
+    image: new Image()
+  },
 }
 })
 
