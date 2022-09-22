@@ -13,8 +13,8 @@
 // idle done !!
 // run done !!
 // jump(2:49:54!!)
-// attack
-// enemy spirte (kenshi)
+// attack done !!
+// enemy spirte (kenshi) (3:01)
 // interface design and animation
 // pushing live
 
@@ -82,7 +82,17 @@ const player = new Fighter ({
       imageSrc: './img/Jump.png',
       framesMax: 2,
       image: new Image()
-    }
+    },
+    fall: {
+      imageSrc: './img/samuraiMack/Fall.png',
+      framesMax: 2,
+      image: new Image()
+    },
+    attack1: {
+      imageSrc: './img/samuraiMack/Attack1.png',
+      framesMax: 6,
+      image: new Image()
+    },
   }
 })
 
@@ -143,7 +153,7 @@ function animate () {
   enemy.velocity.x = 0
 
   // player movement
-  player.switchSprite('idle')
+
   if (keys.a.pressed && player.LastKey === 'a') {
     player.velocity.x = -5
     player.switchSprite('run')
@@ -152,10 +162,14 @@ function animate () {
     player.velocity.x = 5
     player.switchSprite('run')
     console.log(player.image)
+  } else {
+    player.switchSprite('idle')
   }
 
   if (player.velocity.y < 0) {
     player.switchSprite('jump')
+  } else if (player.velocity.y > 0) {
+    player.switchSprite('fall')
   }
 
   // enemy movement

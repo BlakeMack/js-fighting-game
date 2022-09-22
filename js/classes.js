@@ -101,15 +101,17 @@ class Fighter extends Sprite {
     this.position.x += this.velocity.x
     this.position.y += this.velocity.y
 
+    // gravity function
     if (this.position.y + this.height + this.velocity.y >= canvas.height - 95 ) {
       this.velocity.y = 0
+      this.position.y = 331.39999999998514
     }
     else {
       this.velocity.y += gravity
     }
-
   }
   attack () {
+    this.switchSprite('attack1')
     this.isAttacking = true
     setTimeout(() => {
       this.isAttacking = false
@@ -117,22 +119,51 @@ class Fighter extends Sprite {
   }
 
   switchSprite (sprite) {
+    if (
+      this.image === this.sprites.attack1.image
+      && this.framesCurrent < this.sprites.attack1.framesMax - 1
+      )
+      return
     switch(sprite) {
       case 'idle':
-        if (this.image !== this.sprites.idle.image)
+        if (this.image !== this.sprites.idle.image) {
           this.image = this.sprites.idle.image
+          this.framesMax = this.sprites.idle.framesMax
+          this.framesCurrent = 0
+        }
         break;
       case 'run':
-        if (this.image !== this.sprites.run.image)
-        this.image = this.sprites.run.image
+        if (this.image !== this.sprites.run.image) {
+          this.image = this.sprites.run.image
+          this.framesMax = this.sprites.run.framesMax
+          this.framesCurrent = 0
+        }
         break;
       case 'jump':
-        this.image = this.sprites.jump.image
-        console.log("hello world")
-        console.log(this.image)
-        this.framesMax = this.sprites.jump.framesMax
+        if (this.image !== this.sprites.run.image) {
+          this.image = this.sprites.jump.image
+          console.log("hello world")
+          this.framesMax = this.sprites.jump.framesMax
+          this.framesCurrent = 0
+        }
         break;
+      case 'fall':
+        if (this.image !== this.sprites.fall.image) {
+          this.image = this.sprites.fall.image
+          console.log("falling")
+          this.framesMax = this.sprites.fall.framesMax
+          this.framesCurrent = 0
+        }
+        break;
+        case 'attack1':
+          if (this.image !== this.sprites.attack1.image) {
+            this.image = this.sprites.attack1.image
+            console.log("attack1")
+            this.framesMax = this.sprites.attack1.framesMax
+            this.framesCurrent = 0
+          }
+          break;
+      }
     }
 
   }
-}
