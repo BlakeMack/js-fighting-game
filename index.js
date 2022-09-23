@@ -114,14 +114,14 @@ offset: {
 imageSrc: './img/kenji/Idle.png',
 offset: {
   x: 215,
-  y: 157
+  y: 167
 },
-framesMax: 8,
+framesMax: 4,
 scale: 2.5,
 sprites: {
   idle: {
     imageSrc: './img/kenji/Idle.png',
-    framesMax: 8
+    framesMax: 4
   },
   // start from player sprite run 2:36
   run: {
@@ -141,7 +141,7 @@ sprites: {
   },
   attack1: {
     imageSrc: './img/kenji/Attack1.png',
-    framesMax: 6,
+    framesMax: 4,
     image: new Image()
   },
 }
@@ -181,7 +181,7 @@ function animate () {
   background.update()
   shop.update()
   player.update()
-  // enemy.update()
+  enemy.update()
 
   player.velocity.x = 0
   enemy.velocity.x = 0
@@ -200,6 +200,7 @@ function animate () {
     player.switchSprite('idle')
   }
 
+  // player jump
   if (player.velocity.y < 0) {
     player.switchSprite('jump')
   } else if (player.velocity.y > 0) {
@@ -209,8 +210,19 @@ function animate () {
   // enemy movement
   if (keys.ArrowLeft.pressed && enemy.LastKey === 'ArrowLeft') {
     enemy.velocity.x = -5
+    enemy.switchSprite('run')
   } else if (keys.ArrowRight.pressed && enemy.LastKey === 'ArrowRight') {
     enemy.velocity.x = 5
+    enemy.switchSprite('run')
+  } else {
+    enemy.switchSprite('idle')
+  }
+
+  // enemy jump
+  if (enemy.velocity.y < 0) {
+    enemy.switchSprite('jump')
+  } else if (enemy.velocity.y > 0) {
+    enemy.switchSprite('fall')
   }
 
   // detect for collision // 1h mark progress, need to add in 'is attacking' conditional
