@@ -14,7 +14,9 @@
 // run done !!
 // jump(2:49:54!!)
 // attack done !!
-// enemy spirte (kenshi) (3:01)
+// enemy spirte (kenshi) (3:01) done !!
+
+// 3:33:35
 // interface design and animation
 // pushing live
 
@@ -93,7 +95,25 @@ const player = new Fighter ({
       framesMax: 6,
       image: new Image()
     },
-  }
+    takeHit: {
+      imageSrc: './img/samuraiMack/Take Hit - white silhouette.png',
+      framesMax: 4,
+      image: new Image()
+    },
+    death: {
+      imageSrc: './img/samuraiMack/Death.png',
+      framesMax: 6,
+      image: new Image()
+    }
+  },
+  attackBox: {
+    offset: {
+      x: 100,
+      y: 50
+    },
+    width: 155,
+    height: 50
+  },
 })
 
 
@@ -144,6 +164,24 @@ sprites: {
     framesMax: 4,
     image: new Image()
   },
+  takeHit: {
+    imageSrc: './img/kenji/Take hit.png',
+    framesMax: 3,
+    image: new Image()
+  },
+  death: {
+    imageSrc: './img/kenji/Death.png',
+    framesMax: 7,
+    image: new Image()
+  }
+},
+attackBox: {
+  offset: {
+    x: -170,
+    y: 50
+  },
+  width: 170,
+  height: 50
 }
 })
 
@@ -225,27 +263,40 @@ function animate () {
     enemy.switchSprite('fall')
   }
 
-  // detect for collision // 1h mark progress, need to add in 'is attacking' conditional
+  // detect for collision & enemy gets hit //
   if ( rectangularCollision({
     rectangle1: player,
     rectangle2: enemy
   }) &&
-    player.isAttacking) {
+    player.isAttacking
+    && player.framesCurrent === 4) {
+    enemy.takehit()
     player.isAttacking = false
     console.log("hit")
-    enemy.health -= 20
     document.querySelector("#EnemyHealth").style.width = enemy.health + '%'
   }
+
+  // if player misses
+  if (player.isAttacking && player.framesCurrent === 4) {
+    player.isAttacking = false
+  }
+
+  // player gets hit
+
 
   if ( rectangularCollision({
     rectangle1: enemy,
     rectangle2: player
   }) &&
-    enemy.isAttacking) {
+    enemy.isAttacking && enemy.framesCurrent === 2) {
+    player.takehit()
     enemy.isAttacking = false
     console.log("enemy hit")
-    player.health -= 20
     document.querySelector("#PlayerHealth").style.width = player.health + '%'
+  }
+
+  if (enemy.isAttacking && enemy.framesCurrent === 2) {
+    enemy.isAttacking = false
   }
   // end game based on health
   if (enemy.health <= 0 || player.health <= 0 ) {
@@ -257,36 +308,41 @@ animate()
 
 window.addEventListener('keydown', (event) => {
   console.log(event.key) ;
-  switch (event.key) {
-    case 'd' :
-      keys.d.pressed = true
-      player.LastKey = 'd'
-      break
-    case 'a' :
-      keys.a.pressed = true
-      player.LastKey = 'a'
-      break
-    case 'w' :
-      player.velocity.y = -20
-      break
-
-    case 'ArrowRight' :
-      keys.ArrowRight.pressed = true
-      enemy.LastKey = 'ArrowRight'
-      break
-    case 'ArrowLeft' :
-      keys.ArrowLeft.pressed = true
-      enemy.LastKey = 'ArrowLeft'
-      break
-    case 'ArrowUp' :
-      enemy.velocity.y = -20
-      break
-    case ' ' :
-      player.attack()
-      break
-    case 'ArrowDown' :
-      enemy.attack()
-      break
+  if (!player.dead) {
+    switch (event.key) {
+      case 'd' :
+        keys.d.pressed = true
+        player.LastKey = 'd'
+        break
+      case 'a' :
+        keys.a.pressed = true
+        player.LastKey = 'a'
+        break
+      case 'w' :
+        player.velocity.y = -20
+        break
+    }
+  }
+  if (!enemy.dead) {
+    switch (event.key) {
+      case 'ArrowRight' :
+        keys.ArrowRight.pressed = true
+        enemy.LastKey = 'ArrowRight'
+        break
+      case 'ArrowLeft' :
+        keys.ArrowLeft.pressed = true
+        enemy.LastKey = 'ArrowLeft'
+        break
+      case 'ArrowUp' :
+        enemy.velocity.y = -20
+        break
+      case ' ' :
+        player.attack()
+        break
+      case 'ArrowDown' :
+        enemy.attack()
+        break
+    }
   }
 })
 
