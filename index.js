@@ -321,6 +321,9 @@ window.addEventListener('keydown', (event) => {
       case 'w' :
         player.velocity.y = -20
         break
+      case ' ' :
+        player.attack()
+        break
     }
   }
   if (!enemy.dead) {
@@ -335,9 +338,6 @@ window.addEventListener('keydown', (event) => {
         break
       case 'ArrowUp' :
         enemy.velocity.y = -20
-        break
-      case ' ' :
-        player.attack()
         break
       case 'ArrowDown' :
         enemy.attack()
