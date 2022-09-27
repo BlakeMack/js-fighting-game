@@ -295,7 +295,7 @@ function animate () {
     enemy.isAttacking && enemy.framesCurrent === 2) {
     player.takehit()
     enemy.isAttacking = false
-    console.log("enemy hit")
+    console.log("enemy dealt damage to player")
     gsap.to('#playerHealth', {
       width: player.health + '%'
     })

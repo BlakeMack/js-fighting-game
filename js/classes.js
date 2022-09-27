@@ -99,10 +99,11 @@ class Fighter extends Sprite {
     this.draw()
     if (!this.dead)
     this.animateFrames()
-    this.attackbox.position.x = this.position.x + this.attackbox.offset.x // we are adding -50 at this point
+    this.attackbox.position.x = this.position.x + this.attackbox.offset.x
     this.attackbox.position.y = this.position.y + this.attackbox.offset.y
 
     // attack box drawn
+    c.fillRect(this.attackbox.position.x, this.attackbox.position.y, this.attackbox.width, this.attackbox)
     // c.fillRect(this.attackbox.position.x, this.attackbox.position.y, this.attackbox.width, this.attackbox.height)
 
     this.position.x += this.velocity.x
@@ -151,6 +152,7 @@ class Fighter extends Sprite {
         && this.framesCurrent < this.sprites.takeHit.framesMax - 1)
         return
 
+    // changes sprite image (jump, run, idle, attack)
     switch(sprite) {
       case 'idle':
         if (this.image !== this.sprites.idle.image) {
@@ -185,7 +187,7 @@ class Fighter extends Sprite {
         case 'attack1':
           if (this.image !== this.sprites.attack1.image) {
             this.image = this.sprites.attack1.image
-            console.log("attack1")
+            console.log("attack image activated succesfully")
             this.framesMax = this.sprites.attack1.framesMax
             this.framesCurrent = 0
           }
