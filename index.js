@@ -241,6 +241,7 @@ function animate () {
   }
 
   // player jump
+
   if (player.velocity.y < 0) {
     player.switchSprite('jump')
   } else if (player.velocity.y > 0) {
@@ -325,7 +326,8 @@ window.addEventListener('keydown', (event) => {
         player.LastKey = 'a'
         break
       case 'w' :
-        player.velocity.y = -20
+        if (player.position.y > 230) player.velocity.y = -20
+        console.log(player.position.y)
         break
       case 's' :
         player.attack()
@@ -343,7 +345,8 @@ window.addEventListener('keydown', (event) => {
         enemy.LastKey = 'ArrowLeft'
         break
       case 'ArrowUp' :
-        enemy.velocity.y = -20
+        if (enemy.position.y > 330) enemy.velocity.y = -20
+        console.log(enemy.velocity.y)
         break
       case 'ArrowDown' :
         enemy.attack()
