@@ -1,4 +1,5 @@
 <head>
+  <script src="https://kit.fontawesome.com/634d0ae727.js" crossorigin="anonymous"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -23,7 +24,7 @@
 </head>
 <body>
   <!-- container div -->
-  <div style="position: relative; display: inline-block; padding-left: 400px; padding-top: 200px;">
+  <div style="position: relative; display: inline-block; padding-left: 400px; padding-top: 100px;">
     <!-- smaller red container div  -->
     <div style="position: absolute; display: flex; width: 1000px; align-items: center; padding: 20px;">
       <!-- player health -->
@@ -50,25 +51,25 @@
       </div>
     </div>
     <!-- draw message -->
-    <div id="DisplayText" style="position: absolute; color: white; display: flex; align-items: center; justify-content: center; top: 200; bottom: 0; left: 375; right: 0;"></div>
+    <div id="DisplayText" style="position: absolute; color: white; display: flex; align-items: center; justify-content: center; top: -200; bottom: 0; left: 375; right: 0;"></div>
     <canvas></canvas>
     <div class="controls">
       <h1>Player one Controls</h1>
       <ul>
         <div class="list">
-          <li>W</li>
-          <li>A</li>
-          <li>S</li>
-          <li>D</li>
+          <li><i class="fa-solid fa-w"></i></li>
+          <li><i class="fa-solid fa-a"></i></li>
+          <li><i class="fa-solid fa-s"></i></li>
+          <li><i class="fa-solid fa-d"></i></li>
         </div>
       </ul>
       <h1>Player two Controls</h1>
       <ul>
         <div class="list">
-          <li>Up</li>
-          <li>Left</li>
-          <li>Down</li>
-          <li>Right</li>
+          <li><i class="fa-solid fa-up-long"></i></li>
+          <li><i class="fa-solid fa-down-long"></i></li>
+          <li><i class="fa-solid fa-left-long"></i></li>
+          <li><i class="fa-solid fa-arrow-right-long"></i></li>
         </div>
       </ul>
     </div>
