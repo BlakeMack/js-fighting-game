@@ -3,10 +3,21 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
+    .list {
+      display: flex;
+      justify-content: space-around;
+      list-style: none;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
     * {
       box-sizing: border-box;
       font-family: 'Press Start 2P', cursive;
-    }
+    };
+
 
   </style>
 </head>
@@ -41,6 +52,26 @@
     <!-- draw message -->
     <div id="DisplayText" style="position: absolute; color: white; display: flex; align-items: center; justify-content: center; top: 200; bottom: 0; left: 375; right: 0;"></div>
     <canvas></canvas>
+    <div class="controls">
+      <h1>Player one Controls</h1>
+      <ul>
+        <div class="list">
+          <li>W</li>
+          <li>A</li>
+          <li>S</li>
+          <li>D</li>
+        </div>
+      </ul>
+      <h1>Player two Controls</h1>
+      <ul>
+        <div class="list">
+          <li>Up</li>
+          <li>Left</li>
+          <li>Down</li>
+          <li>Right</li>
+        </div>
+      </ul>
+    </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="js/utilities.js"></script>
