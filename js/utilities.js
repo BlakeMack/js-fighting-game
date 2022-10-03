@@ -17,7 +17,6 @@ function determineWinner({player, enemy, timerId}) {
     console.log("tie")
     var tie = new Typed('.p1wins', {
       stringsElement: '#typed-tie',
-      loop: true,
       typeSpeed: 30
     });
     console.log(tie.stringsElement)
@@ -25,7 +24,6 @@ function determineWinner({player, enemy, timerId}) {
   } else if (player.health > enemy.health ) {
     var p1wins = new Typed('.p1wins', {
       stringsElement: '#typed-strings',
-      loop: true,
       typeSpeed: 30
     });
     console.log(p1wins.stringsElement)
@@ -34,7 +32,6 @@ function determineWinner({player, enemy, timerId}) {
     // where message is passed through to html
     var p2wins = new Typed('.p1wins', {
       stringsElement: '#typed-p2wins',
-      loop: true,
       typeSpeed: 30
     });
     console.log(p2wins.stringsElement)
