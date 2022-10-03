@@ -51,8 +51,20 @@
       </div>
     </div>
     <!-- draw message -->
+    <div id="typed-strings" style="display: none">
+      <p>Player 1 Wins</p>
+    </div>
+    <div id="typed-tie" style="display: none">
+      <p>Draw</p>
+    </div>
+    <div id="typed-p2wins" style="display: none">
+      <p>Player 2 Wins</p>
+    </div>
     <div id="DisplayText" style="position: absolute; color: white; display: flex; align-items: center; justify-content: center; top: -200; bottom: 0; left: 375; right: 0;">
-
+      <span class="p1wins"></span>
+      <span class="p2wins"></span>
+      <span class="tie"></span>
+      <!-- type js text -->
     </div>
     <canvas></canvas>
     <div class="controls">
@@ -79,6 +91,20 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="js/typed.js"></script>
   <script src="js/utilities.js"></script>
+  <!-- <script>
+    var options = {
+      strings: ['Player 1 Wins'],
+      typeSpeed: 40
+    };
+   var typed = new Typed('.typed', options);
+  </script> -->
+  <!-- <script>
+    var typed = new Typed('.typed', {
+      stringsElement: '#typed-strings',
+      loop: true,
+      typeSpeed: 30
+    });
+  </script> -->
   <script src="js/classes.js"></script>
   <script src="index.js"></script>
 </body>

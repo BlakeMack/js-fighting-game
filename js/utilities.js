@@ -1,11 +1,4 @@
 
-var options = {
-  strings: ['<i>First</i> sentence.', '&amp; a second sentence.'],
-  typeSpeed: 40
-};
-
-var typed = new Typed('.element', options);
-
 function rectangularCollision({ rectangle1,rectangle2 }) {
   return (
     rectangle1.attackbox.position.x + rectangle1.attackbox.width >= rectangle2.position.x &&
@@ -19,18 +12,32 @@ function determineWinner({player, enemy, timerId}) {
   clearTimeout(timerId)
   console.log("player health:", player.health)
   console.log(timer)
-  document.querySelector("#DisplayText").style.display = 'flex'
+  // document.querySelector(".typed").style.display = 'flex'
   if (player.health === enemy.health) {
     console.log("tie")
+    var tie = new Typed('.p1wins', {
+      stringsElement: '#typed-tie',
+      loop: true,
+      typeSpeed: 30
+    });
+    console.log(tie.stringsElement)
     // where message is passed through to html
-    document.querySelector("#DisplayText").innerHTML = 'Tie'
   } else if (player.health > enemy.health ) {
-    // where message is passed through to html
-    console.log(typed)
-    document.querySelector("#DisplayText").innerHTML = 'Player 1 Wins'
+    var p1wins = new Typed('.p1wins', {
+      stringsElement: '#typed-strings',
+      loop: true,
+      typeSpeed: 30
+    });
+    console.log(p1wins.stringsElement)
+    // document.querySelector(".typed").style.display = 'flex'
   } else if (enemy.health > player.health ) {
     // where message is passed through to html
-    document.querySelector("#DisplayText").innerHTML = 'Player 2 Wins'
+    var p2wins = new Typed('.p1wins', {
+      stringsElement: '#typed-p2wins',
+      loop: true,
+      typeSpeed: 30
+    });
+    console.log(p2wins.stringsElement)
   }
 }
 
