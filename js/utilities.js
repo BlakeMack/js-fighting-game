@@ -1,3 +1,4 @@
+
 function rectangularCollision({ rectangle1,rectangle2 }) {
   return (
     rectangle1.attackbox.position.x + rectangle1.attackbox.width >= rectangle2.position.x &&
@@ -5,20 +6,38 @@ function rectangularCollision({ rectangle1,rectangle2 }) {
     rectangle1.attackbox.position.y + rectangle1.attackbox.height >= rectangle2.position.y &&
     rectangle1.attackbox.position.y <= rectangle2.position.y + rectangle2.height
     )
-}
+  }
 
 function determineWinner({player, enemy, timerId}) {
   clearTimeout(timerId)
   console.log("player health:", player.health)
   console.log(timer)
-  document.querySelector("#DisplayText").style.display = 'flex'
+  // document.querySelector(".typed").style.display = 'flex'
   if (player.health === enemy.health) {
     console.log("tie")
-    document.querySelector("#DisplayText").innerHTML = 'Tie'
+    var tie = new Typed('.p1wins', {
+      stringsElement: '#typed-tie',
+      loop: true,
+      typeSpeed: 30
+    });
+    console.log(tie.stringsElement)
+    // where message is passed through to html
   } else if (player.health > enemy.health ) {
-    document.querySelector("#DisplayText").innerHTML = 'Player 1 Wins'
+    var p1wins = new Typed('.p1wins', {
+      stringsElement: '#typed-strings',
+      loop: true,
+      typeSpeed: 30
+    });
+    console.log(p1wins.stringsElement)
+    // document.querySelector(".typed").style.display = 'flex'
   } else if (enemy.health > player.health ) {
-    document.querySelector("#DisplayText").innerHTML = 'Player 2 Wins'
+    // where message is passed through to html
+    var p2wins = new Typed('.p1wins', {
+      stringsElement: '#typed-p2wins',
+      loop: true,
+      typeSpeed: 30
+    });
+    console.log(p2wins.stringsElement)
   }
 }
 

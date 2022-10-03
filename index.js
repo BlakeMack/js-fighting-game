@@ -20,6 +20,10 @@
 // interface design and animation
 // pushing live
 
+// determine winner off button
+  let determined = false
+//
+
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
 
@@ -306,8 +310,9 @@ function animate () {
     enemy.isAttacking = false
   }
   // end game based on health
-  if (enemy.health <= 0 || player.health <= 0 ) {
+  if (determined === false && enemy.health <= 0 || determined === false && player.health <= 0) {
     determineWinner({ player, enemy, timerId })
+    determined = true
   }
 }
 
