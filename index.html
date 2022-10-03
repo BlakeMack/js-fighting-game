@@ -14,17 +14,49 @@
       text-align: center;
     }
 
+    .replay {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    a {
+      background-color:  #A78BFA;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    span {
+      font-size: 25px;
+      margin-right: 20px;
+      margin-top: 50px;
+    }
+
+    .btn-play {
+      margin-left: 375px
+    }
+
     * {
       box-sizing: border-box;
       font-family: 'Press Start 2P', cursive;
     };
 
-
   </style>
 </head>
 <body>
+  </div>
+  <div id="DisplayText" style="text-align: center">
+    <!-- type js text -->
+    <span class="p1wins"></span>
+    <span class="p2wins"></span>
+    <span class="tie"></span>
+  </div>
   <!-- container div -->
-  <div style="position: relative; display: inline-block; padding-left: 400px; padding-top: 100px;">
+  <div style="position: relative; display: inline-block; padding-left: 400px;">
     <!-- smaller red container div  -->
     <div style="position: absolute; display: flex; width: 1000px; align-items: center; padding: 20px;">
       <!-- player health -->
@@ -60,14 +92,11 @@
     <div id="typed-p2wins" style="display: none">
       <p>Player 2 Wins</p>
     </div>
-    <div id="DisplayText" style="position: absolute; color: white; display: flex; align-items: center; justify-content: center; top: -200; bottom: 0; left: 375; right: 0;">
-      <span class="p1wins"></span>
-      <span class="p2wins"></span>
-      <span class="tie"></span>
-      <!-- type js text -->
-    </div>
     <canvas></canvas>
-    <div class="controls">
+    <div class="controls" style="align-items: center;">
+      <div class="btn-play" style="display: none">
+        <a href="">Play again</a>
+      </div>
       <h1>Player one Controls</h1>
       <ul>
         <div class="list">
