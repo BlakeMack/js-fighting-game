@@ -17,24 +17,27 @@ function determineWinner({player, enemy, timerId}) {
     console.log("tie")
     var tie = new Typed('.p1wins', {
       stringsElement: '#typed-tie',
-      typeSpeed: 30
+      typeSpeed: 40
     });
     console.log(tie.stringsElement)
+    document.querySelector(".btn-play").style.display = 'block'
     // where message is passed through to html
   } else if (player.health > enemy.health ) {
     var p1wins = new Typed('.p1wins', {
       stringsElement: '#typed-strings',
-      typeSpeed: 30
+      typeSpeed: 40
     });
     console.log(p1wins.stringsElement)
+    document.querySelector(".btn-play").style.display = 'block'
     // document.querySelector(".typed").style.display = 'flex'
   } else if (enemy.health > player.health ) {
     // where message is passed through to html
     var p2wins = new Typed('.p1wins', {
       stringsElement: '#typed-p2wins',
-      typeSpeed: 30
+      typeSpeed: 40
     });
     console.log(p2wins.stringsElement)
+    document.querySelector(".btn-play").style.display = 'block'
   }
 }
 
